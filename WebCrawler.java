@@ -129,7 +129,7 @@ public class WebCrawler{
             CompletableFuture<?>[] asyncs = requests.stream().map( req -> client.sendAsync(req, HttpResponse.BodyHandlers.ofString())
                                                                         .thenApply(HttpResponse::body).thenAccept(this::regex)).toArray(CompletableFuture<?>[]::new);
             CompletableFuture.allOf(asyncs).join();
-            getUrls();
+            //getUrls();
             if(urls.size() != 0){
                 print();
             }
